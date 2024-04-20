@@ -44,7 +44,7 @@ model User {
 
   accounts Account[]
   sessions Session[]
-  todo     todo[]
+  Todo     Todo[]
 }
 
 model VerificationToken {
@@ -55,7 +55,7 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model todo {
+model Todo {
   id        String  @id @default(cuid())
   title     String
   completed Boolean

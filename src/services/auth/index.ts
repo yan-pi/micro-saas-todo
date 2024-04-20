@@ -6,5 +6,10 @@ export const {
   handlers: { GET, POST },
   auth,
 } = NextAuth({
-  providers: [Github],
+  providers: [
+    EmailProvider({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+    }),
+  ],
 });
