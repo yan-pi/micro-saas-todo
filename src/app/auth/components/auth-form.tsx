@@ -24,6 +24,7 @@ export function AuthForm() {
       toast({
         title: "Error",
         description: "An error occurred. Please try again.",
+        variant: "destructive",
       });
     }
   });
