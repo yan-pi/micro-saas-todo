@@ -8,6 +8,13 @@ export const {
   handlers: { GET, POST },
   auth,
 } = NextAuth({
+  pages: {
+    signIn: "/auth",
+    signOut: "/auth",
+    error: "/auth",
+    verifyRequest: "/auth",
+    newUser: "/app",
+  },
   adapter: PrismaAdapter(prisma),
   providers: [
     EmailProvider({
