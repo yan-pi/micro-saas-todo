@@ -1,33 +1,32 @@
-"use client";
+"use client"
 
 /* eslint-disable react/no-unescaped-entities */
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { CardContent, Card } from "@/components/ui/card";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { signIn } from "next-auth/react";
-import { toast } from "@/components/ui/use-toast";
+import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { CardContent, Card } from "@/components/ui/card"
+import { useForm } from "react-hook-form"
+import { signIn } from "next-auth/react"
+import { toast } from "@/components/ui/use-toast"
 
 export function AuthForm() {
-  const form = useForm();
-  const handleSubmit = form.handleSubmit(async (data) => {
+  const form = useForm()
+  const handleSubmit = form.handleSubmit(async data => {
     try {
-      await signIn("nodemailer", { email: data.email, redirect: false });
+      await signIn("nodemailer", { email: data.email, redirect: false })
 
       toast({
         title: "Magic Link Sent",
         description: "Check your email for the magic link to login",
-      });
+      })
     } catch (error) {
       toast({
         title: "Error",
         description: "An error occurred. Please try again.",
         variant: "destructive",
-      });
+      })
     }
-  });
+  })
 
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-gray-100 px-4 dark:bg-gray-950">
@@ -61,13 +60,7 @@ export function AuthForm() {
             </CardContent>
           </Card>
         </form>
-        <div className="text-center text-sm text-gray-500 dark:text-gray-400">
-          Don't have an account?
-          <Link className="font-medium underline underline-offset-4" href="#">
-            Sign up
-          </Link>
-        </div>
       </div>
     </div>
-  );
+  )
 }
